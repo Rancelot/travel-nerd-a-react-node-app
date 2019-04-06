@@ -9,7 +9,6 @@
     "client": "cd client && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
- 
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -30,6 +29,7 @@
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "socket.io": "^2.2.0"
   }
 }
