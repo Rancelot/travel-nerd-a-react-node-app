@@ -16,7 +16,7 @@ class App extends Component {
     super(props);
     // temp backup copy of photos
     this.state = { photos: [], favorites: [], temp: [] };
-    var socket = openSocket.connect('http://localhost:8080');
+    
   }
 
   /**
