@@ -22,23 +22,19 @@ class About extends React.Component {
                         <div className="memojis">  
                             <a href="https://github.com/xDKevz" rel="noopener noreferrer" target="_blank">
                                 <figure>
+                                    <img src={memojiK} width="200" height="200" alt="Kevin" />
                                     <figcaption>John Kevin Ruiz</figcaption>
                                 </figure>
                             </a>
                             
                             <a href="https://github.com/Rancelot" rel="noopener noreferrer " target="_blank">
                                 <figure>
-                                    
+                                    <img src={memojiR} width="200" height="200" alt="Rafael" />
                                     <figcaption>Rafael Angelo Pucut</figcaption>
                                 </figure>
-                            </a>     
-                            <figcaption>Kevin Lam</figcaption>
-                            <figcaption>Ben Carr</figcaption>
-                            <figcaption>Ross McConnell</figcaption>
-                            <figcaption>Lee Palisoc</figcaption>
+                            </a>
                             <br></br>
                         </div>
-
                         <h3>CREDITS AND OTHER RESOURCES</h3>
                         <div>
                             <ul className="resources">
@@ -52,6 +48,7 @@ class About extends React.Component {
                                 <li><a href="https://docs.atlas.mongodb.com/driver-connection/"> Connecting to MongoDB Atlas </a></li>
                                 <li><a href="https://www.tutorialkart.com/nodejs/mongoose/insert-document-to-mongodb/"> POST/Insert API request </a></li>
                                 <li><a href="https://www.youtube.com/watch?v=v0t42xBIYIs&t=12s"> Video that showed how to use concurrent </a></li>
+                                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#attr-capture"></a></li>
                             
                             </ul>
                         </div>

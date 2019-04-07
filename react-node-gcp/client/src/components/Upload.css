@@ -1,13 +1,15 @@
 .uploadBtns {
     display: grid; 
     grid-template-columns: 100%;
+    grid-column-start: 1;
+    grid-column-end: span 2;
 }
 
 .btn {
     width: 75%;
     margin: auto;
+    
 }
-
 .fileInput {
     margin: auto;
     background-color: #FE4448;
@@ -16,56 +18,58 @@
     border-radius: 5px;
     height: 30px;
     padding-top: 10px;
+    grid-column-start: 1;
+    grid-column-end: span 2;
 }
 
+.description {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    grid-column-end: span 2;
+}
 .uploadForm{
     display: grid;
-    grid-template-columns: 100%;
-    background-color: #28AED5;
-    width: 100%;
-    margin: auto;
-    height: 710px;
-    border-radius: 15px;
-    padding: 5px;
-}
-
-.formContainer {
-    margin: 0.5rem auto 0.5rem auto;
-    text-align: center; 
-    width: 25%;
-    opacity: 0.95;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 35% 10%;
     
 }
 
 .photoInfo {
+    grid-column-start: 1;
     padding-bottom: 0;
-    height: 450px;
+    height: 400px;
 }
 .photoEXIF {
-    display: none;
+    grid-column-start: 2;
+    
 }
 
 form.uploadForm label{
     display: block;
+    margin-top: 0.5rem;
     margin: auto;
 }
 
 form.uploadForm input{
-    padding: 10px 50px;
-    width: 50px;
-    height: 10px;
-    margin: 2px;
-    width: 50%;
-    font: 12px;
-    text-align: center;
+    padding: 12px 30px;
+    margin: 0;
 }
+
 
 #selectFile {
     display: none;
 }
 
+#addImage {
+    padding: 15px 37% 15px 37%;
+}
 
+.addImage {
+    grid-row-start: 3;
+    grid-column-start: 1;
+    grid-column-end: span 2;
+}
 #desc {
-    padding: 75px 50px;
+    padding: 75px 30%;
     text-align: left;
 }
