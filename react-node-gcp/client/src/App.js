@@ -8,7 +8,7 @@ import _ from 'lodash';
 import Upload from './components/Upload.js';
 import Login from './components/Login.js';
 import io from 'socket.io-client';
-let socket = io('http://localhost:8080');
+let socket = io('http://localhost:3000'); // make a connection from server to this side here
 
 
 class App extends Component {
@@ -30,7 +30,7 @@ class App extends Component {
     socket.on('connect', () => {
       console.log('User connected from client successfully');
     });
-    
+
     try {
 
 	    const url = "/api/images";
