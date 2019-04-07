@@ -15,8 +15,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     // temp backup copy of photos
-    this.state = { photos: [], favorites: [], temp: [], data: {} };
-      
+    this.state = { photos: [], favorites: [], temp: [] };
+    var socket = openSocket.connect('http://localhost:8080');
   }
 
   /**
@@ -32,7 +32,11 @@ class App extends Component {
     });
 
     try {
-
+      // const url = "https://randyconnolly.com/funwebdev/services/travel/images.php";
+      // const response = await fetch(url);
+      // const jsonData = await response.json();
+      // this.setState( { photos: jsonData, temp: jsonData } );
+      //const url = "https://randyconnolly.com/funwebdev/services/travel/images.php"
 	    const url = "/api/images";
       const response = await fetch(url);
       const photoJson = await response.json();
@@ -51,22 +55,18 @@ class App extends Component {
   render() {
     return (
       <div>
-      <script src= "/socket.io/socket.io.js"></script>
-
-        {this.socketFunction};
-
         <Route path='/upload' exact component={Upload}></Route>
         <Route path='/' exact component={Home} />
         <Route path='/home' exact component={Home} />
-        <Route path='/browse' exact 
-          render={ (props) => 
+        <Route path='/browse' exact
+          render={ (props) =>
           <PhotoBrowser
             downloadFavorites={ this.downloadFavorites}
             removeFav={ this.removeFav}
             removePhoto={ this.removePhoto}
-            favorites={ this.state.favorites} 
-            photos={ this.state.photos } 
-            updatePhoto={ this.updatePhoto }  
+            favorites={ this.state.favorites}
+            photos={ this.state.photos }
+            updatePhoto={ this.updatePhoto }
             addPhotoToFavorites={ this.addPhotoToFavorites }
 
               />
@@ -75,16 +75,14 @@ class App extends Component {
         <Route path='/about' exact component={About} />
         <Route path='/login' exact component={Login} />
       </div>
-     
+
     );
   }
-
- 
 
   /**
    * This function updates information of specific Photo Location selected.
    * @param id - the identification number of current Photo being edited
-   * @param photo - input data associated with 
+   * @param photo - input data associated with
    */
   updatePhoto = (id, photo) => {
     console.log("updating details");
@@ -121,10 +119,10 @@ class App extends Component {
     if (!this.state.favorites.find (p => p.id === id) ) {
       // create copy of favorites
       const copyFavorites = cloneDeep(this.state.favorites);
-      
+
       // push item into array
       copyFavorites.push(photo);
-      
+
       // update state
       this.setState( { favorites: copyFavorites });
 
@@ -141,7 +139,7 @@ class App extends Component {
    */
   removePhoto = (id) => {
     let index = _.findIndex(this.state.photos, ['id', id]);
-      
+
     if (index > -1) {
         // create copy of favorites
         const copyPhotos = cloneDeep(this.state.photos);
@@ -159,7 +157,7 @@ class App extends Component {
    */
   removeFav = (id) => {
     let index = _.findIndex(this.state.favorites, ['id', id]);
-    
+
     if (index > -1) {
         // create copy of favorites
         const copyFav = cloneDeep(this.state.favorites);
@@ -230,7 +228,7 @@ class App extends Component {
     });
   }
 
-  
+
 
 
 }
