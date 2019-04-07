@@ -11,7 +11,7 @@ const passport = require('passport');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
-const socket = require('socket.io'); 
+
 
 // create connection to database
 require('./config/dataConnector.js').connect();
@@ -58,8 +58,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//setting up the socket
 
-var io = socket();
 
 module.exports = app;

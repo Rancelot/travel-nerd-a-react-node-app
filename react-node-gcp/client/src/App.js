@@ -7,6 +7,9 @@ import About from './components/About.js';
 import _ from 'lodash';
 import Upload from './components/Upload.js';
 import Login from './components/Login.js';
+import openSocket from '/socket.io/socket.io.js'; 
+
+
 
 
 class App extends Component {
@@ -14,6 +17,7 @@ class App extends Component {
     super(props);
     // temp backup copy of photos
     this.state = { photos: [], favorites: [], temp: [] };
+    var socket = openSocket.connect('http://localhost:8080');  
   }
 
   /**
@@ -220,6 +224,8 @@ class App extends Component {
       FileSaver.saveAs(content, "Favorites.zip");
     });
   }
+
+  
 
 
 }

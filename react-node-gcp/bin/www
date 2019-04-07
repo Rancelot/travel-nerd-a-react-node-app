@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('node-server:server');
 var http = require('http');
+const socketIo = require('socket.io')(http);
+const axios = require('axios'); 
 
 /**
  * Get port from environment and store in Express.
@@ -19,7 +21,18 @@ app.set('port', port);
  * Create HTTP server.
  */
 
+
 var server = http.createServer(app);
+
+//io socket set up.
+
+var io = socketIo(server); 
+io.on('connection', function(){
+    console.log('made connection socket');
+    socket.on("disconnect", () => console.log("Client disconnected"));
+});
+
+ 
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -28,6 +41,9 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+
+
 
 /**
  * Normalize a port into a number, string, or false.
