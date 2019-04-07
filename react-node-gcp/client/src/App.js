@@ -7,17 +7,16 @@ import About from './components/About.js';
 import _ from 'lodash';
 import Upload from './components/Upload.js';
 import Login from './components/Login.js';
-import openSocket from '/socket.io/socket.io.js'; 
-
-
+import io from 'socket.io-client';
+let socket = io('http://localhost:8080');
 
 
 class App extends Component {
   constructor(props) {
     super(props);
     // temp backup copy of photos
-    this.state = { photos: [], favorites: [], temp: [] };
-    var socket = openSocket.connect('http://localhost:8080');  
+    this.state = { photos: [], favorites: [], temp: [], data: {} };
+      
   }
 
   /**
@@ -28,12 +27,12 @@ class App extends Component {
       this.setState({favorites: this.getLocalStorageFav()});
     }
 
+    socket.on('connect', () => {
+      console.log('User connected from client successfully');
+    });
+    
     try {
-      // const url = "https://randyconnolly.com/funwebdev/services/travel/images.php";
-      // const response = await fetch(url);
-      // const jsonData = await response.json();
-      // this.setState( { photos: jsonData, temp: jsonData } );
-      //const url = "https://randyconnolly.com/funwebdev/services/travel/images.php"
+
 	    const url = "/api/images";
       const response = await fetch(url);
       const photoJson = await response.json();
@@ -52,6 +51,10 @@ class App extends Component {
   render() {
     return (
       <div>
+      <script src= "/socket.io/socket.io.js"></script>
+
+        {this.socketFunction};
+
         <Route path='/upload' exact component={Upload}></Route>
         <Route path='/' exact component={Home} />
         <Route path='/home' exact component={Home} />
@@ -75,6 +78,8 @@ class App extends Component {
      
     );
   }
+
+ 
 
   /**
    * This function updates information of specific Photo Location selected.
